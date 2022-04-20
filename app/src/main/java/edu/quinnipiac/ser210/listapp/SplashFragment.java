@@ -15,11 +15,11 @@ import androidx.navigation.Navigation;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class SplashFragment extends Fragment implements View.OnClickListener {
 
     NavController navController = null;
 
-    public MainFragment() {
+    public SplashFragment() {
         // Required empty public constructor
     }
 

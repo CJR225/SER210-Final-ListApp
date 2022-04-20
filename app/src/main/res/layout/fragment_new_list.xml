@@ -109,10 +109,6 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="293dp" />
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_main"
-        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
