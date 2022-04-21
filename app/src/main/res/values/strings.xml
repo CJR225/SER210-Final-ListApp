@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="new_list_splash">New List</string>
-    <string name="edit_list_splash">Edit List</string>
+    <string name="edit_list_splash">Add to List</string>
     <string name="all_lists_splash">View All Lists</string>
     <string name="new_list_header">New List</string>
     <string name="header_splash">To-Do Reminders</string>
