@@ -12,7 +12,8 @@ import java.util.List;
 public class ListsDataSource {
     private SQLiteDatabase database;
     private ListDatabaseHelper dbHelper;
-    private String[] allColumns = {ListDatabaseHelper.LIST_ID, ListDatabaseHelper.LIST_NAME};
+    private String[] allNameColumns = {ListDatabaseHelper.LIST_ID, ListDatabaseHelper.LIST_NAME};
+    private String[] allItem1Columns = {ListDatabaseHelper.LIST_ID, ListDatabaseHelper.LIST_ITEM_1};
 
     public ListsDataSource(Context context) {
         dbHelper = new ListDatabaseHelper(context);
@@ -34,7 +35,19 @@ public class ListsDataSource {
         ContentValues values = new ContentValues();
         values.put(ListDatabaseHelper.LIST_NAME,listName);
         long insertId = database.insert(ListDatabaseHelper.TABLE_LISTS,null,values);
-        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
+        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
+        cursor.moveToFirst();
+        Lists newLists = cursorToList(cursor);
+        cursor.close();
+
+        return newLists;
+    }
+
+    public Lists addItem1 (String item1) {
+        ContentValues item1values = new ContentValues();
+        item1values.put(ListDatabaseHelper.LIST_ITEM_1,item1);
+        long insertId = database.insert(ListDatabaseHelper.TABLE_LISTS,null,item1values);
+        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allItem1Columns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
         cursor.moveToFirst();
         Lists newLists = cursorToList(cursor);
         cursor.close();
@@ -50,7 +63,7 @@ public class ListsDataSource {
 
     public List<Lists> getAllLists() {
         List<Lists> lists = new ArrayList<Lists>();
-        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allColumns,null,null,null,null,null);
+        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,null,null,null,null,null);
         cursor.moveToFirst();
         while (! cursor.isAfterLast()) {
             Lists list = cursorToList(cursor);
