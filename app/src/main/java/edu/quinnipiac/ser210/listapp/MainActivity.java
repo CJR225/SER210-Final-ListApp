@@ -3,6 +3,7 @@ package edu.quinnipiac.ser210.listapp;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavController navController;
     NavigationView navigationView;
     Toolbar toolbar;
+    NewListFragment test;
 
     @Override
     public void onBackPressed() {
@@ -82,5 +84,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void onCreateList (View view) {
+        test.onCreateList(view);
+    }
+    public void onAddToList (View view) {
+        test.onAddToList(view);
     }
 }
