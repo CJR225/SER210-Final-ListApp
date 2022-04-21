@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Owner/StudioProjects/SER210-Final-ListApp/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Owner/StudioProjects/SER210-Final-ListApp/app/src/main/res/layout/fragment_new_list.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Owner/StudioProjects/SER210-Final-ListApp/app/src/main/res/layout/fragment_select_list.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Owner/StudioProjects/SER210-Final-ListApp/app/src/main/res/layout/fragment_splash.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Owner/StudioProjects/SER210-Final-ListApp/app/src/main/res/layout/list_item.xml" value="0.358695652173913" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_edit.xml" value="0.2682291666666667" />

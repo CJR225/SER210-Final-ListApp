@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +26,7 @@ public class NewListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Boolean listCreated;
 
     public NewListFragment() {
         // Required empty public constructor
@@ -58,7 +62,39 @@ public class NewListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        listCreated = false;
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_list, container, false);
     }
+
+    public void onCreateList () {
+        if (listCreated) {
+            Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
+            createWarning.show();
+        } else {
+            EditText listNameView = (EditText) getView().findViewById(R.id.editTextListName);
+            String listName = listNameView.getText().toString();
+            //Database implementation
+
+
+            listCreated = true;
+            Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List Created!", 2000);
+            createComplete.show();
+        }
+    }
+
+    public void onAddToList () {
+        if (listCreated) {
+            Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
+            addWarning.show();
+        } else {
+            EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
+            String listItem  = AddlistItemView.getText().toString();
+
+            Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
+            addComplete.show();
+        }
+
+    }
+
 }
