@@ -61,4 +61,7 @@ public class SelectListFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_select_list, container, false);
     }
+
+
+    //ListView  setListAdapter(adapter);
 }
