@@ -20,7 +20,7 @@ import java.util.Random;
  * Use the {@link NewListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewListFragment extends Fragment implements View.OnClickListener{
+public class NewListFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,48 +80,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         return inflater.inflate(R.layout.fragment_new_list, container, false);
     }
 
-    @Override
-    public void onClick(View view) {
-        if(view.getId() == R.id.createbutton) {
-            if (listCreated) {
-                Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
-                createWarning.show();
-            } else {
-                EditText listNameView = (EditText) getView().findViewById(R.id.editTextListName);
-                String listName = listNameView.getText().toString();
-
-                //Database implementation
-                Lists list = null;
-                list = dataSource.addListName(listName);
-
-                listCreated = true;
-                Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName +  " Created!", 2000);
-                createComplete.show();
-            }
-        } else if (view.getId() == R.id.addButton) {
-            if (listCreated) {
-                Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
-                addWarning.show();
-            } else if (itemAdded) {
-                Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You already added an item. Go to edit to add more!", 2000);
-                addWarning.show();
-            } else {
-                EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
-                String listItem  = AddlistItemView.getText().toString();
-
-                Lists list = null;
-                list = dataSource.addItem1(listItem);
-
-                itemAdded = true;
-                Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
-                addComplete.show();
-            }
-        }
-    }
-}
-
-/*
-    public void onCreateList () {
+    public void onCreateList (View view) {
         //ArrayAdapter<Lists> adapter = (ArrayAdapter<Lists>) getListAdapter();
         if (listCreated) {
             Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
@@ -140,7 +99,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void onAddToList () {
+    public void onAddToList (View view) {
         if (listCreated) {
             Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
             addWarning.show();
@@ -160,4 +119,5 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         }
 
     }
-    */
+
+}
