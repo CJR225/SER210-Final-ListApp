@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -71,11 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
 
@@ -86,10 +84,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
     public void onCreateList (View view) {
-        test.onCreateList(view);
+        NewListFragment fragP = new NewListFragment();
+
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.nav_host_fragment, fragP);
+        ft.commit();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragP.onCreateList();
+        
     }
     public void onAddToList (View view) {
-        test.onAddToList(view);
+
+
     }
 }

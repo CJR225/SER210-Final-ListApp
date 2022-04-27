@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="176dp"
     android:background="#009688"
+    android:backgroundTint="@color/maroon"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -26,7 +27,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="Your name"
+        android:text="Hi my name is Bob"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -40,7 +41,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="you@qu.edu"
+        android:text="bob@qu.edu"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

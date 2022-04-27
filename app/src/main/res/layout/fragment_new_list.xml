@@ -46,40 +46,56 @@
         android:layout_marginStart="94dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="94dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/createbutton"
+
+        app:layout_constraintBottom_toTopOf="@+id/createButtonNewView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/additem" />
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/addButtonNewView"
         android:layout_width="109dp"
         android:layout_height="61dp"
-        android:layout_marginStart="151dp"
+        android:layout_marginStart="152dp"
         android:layout_marginEnd="151dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginBottom="19dp"
         android:backgroundTint="@color/light_maroon"
-        android:text="@string/edit_list_splash"
         android:onClick="onAddToList"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/edit_list_splash"
+        app:layout_constraintBottom_toTopOf="@+id/editFragNewView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/createbutton"
+        android:id="@+id/createButtonNewView"
         android:layout_width="146dp"
         android:layout_height="89dp"
         android:layout_marginStart="133dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="51dp"
         android:backgroundTint="@color/light_maroon"
-        android:text="Create List"
         android:onClick="onCreateList"
-        app:layout_constraintBottom_toTopOf="@+id/addButton"
+
+        android:text="Create List"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+
+    <Button
+        android:id="@+id/editFragNewView"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/light_maroon"
+        android:text="Edit Lists"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -103,13 +119,17 @@
         android:id="@+id/additem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="149dp"
         android:gravity="center"
         android:text="Add Items to List"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="293dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextListName" />
 
 
 
