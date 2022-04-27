@@ -64,7 +64,6 @@
         android:layout_marginBottom="54dp"
         android:backgroundTint="@color/light_maroon"
         android:text="@string/edit_list_splash"
-        android:onClick="onAddToList"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -78,7 +77,6 @@
         android:layout_marginBottom="51dp"
         android:backgroundTint="@color/light_maroon"
         android:text="Create List"
-        android:onClick="onCreateList"
         app:layout_constraintBottom_toTopOf="@+id/addButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

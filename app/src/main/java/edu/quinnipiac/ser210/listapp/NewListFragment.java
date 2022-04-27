@@ -20,7 +20,7 @@ import java.util.Random;
  * Use the {@link NewListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewListFragment extends Fragment {
+public class NewListFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,44 +80,45 @@ public class NewListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_new_list, container, false);
     }
 
-    public void onCreateList () {
-        //ArrayAdapter<Lists> adapter = (ArrayAdapter<Lists>) getListAdapter();
-        if (listCreated) {
-            Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
-            createWarning.show();
-        } else {
-            EditText listNameView = (EditText) getView().findViewById(R.id.editTextListName);
-            String listName = listNameView.getText().toString();
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.createbutton:
+                if (listCreated) {
+                    Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
+                    createWarning.show();
+                } else {
+                    EditText listNameView = (EditText) getView().findViewById(R.id.editTextListName);
+                    String listName = listNameView.getText().toString();
 
-            //Database implementation
-            Lists list = null;
-            list = dataSource.addListName(listName);
+                    //Database implementation
+                    Lists list = null;
+                    list = dataSource.addListName(listName);
 
-            listCreated = true;
-            Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName +  " Created!", 2000);
-            createComplete.show();
+                    listCreated = true;
+                    Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName + " Created!", 2000);
+                    createComplete.show();
+                }
+                break;
+            case R.id.addButton:
+                if (listCreated) {
+                    Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
+                    addWarning.show();
+                } else if (itemAdded) {
+                    Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You already added an item. Go to edit to add more!", 2000);
+                    addWarning.show();
+                } else {
+                    EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
+                    String listItem = AddlistItemView.getText().toString();
+
+                    Lists list = null;
+                    list = dataSource.addItem1(listItem);
+
+                    itemAdded = true;
+                    Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
+                    addComplete.show();
+                }
+                break;
         }
     }
-
-    public void onAddToList () {
-        if (listCreated) {
-            Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
-            addWarning.show();
-        } else if (itemAdded) {
-            Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You already added an item. Go to edit to add more!", 2000);
-            addWarning.show();
-        } else {
-            EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
-            String listItem  = AddlistItemView.getText().toString();
-
-            Lists list = null;
-            list = dataSource.addItem1(listItem);
-
-            itemAdded = true;
-            Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
-            addComplete.show();
-        }
-
-    }
-
 }
