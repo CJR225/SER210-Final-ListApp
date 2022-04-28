@@ -13,6 +13,7 @@ public class ListDatabaseHelper extends SQLiteOpenHelper {
     public static final String LIST_ID = "_id";
     public static final String LIST_NAME = "List Names";
     public static final String LIST_ITEM_1 = "List Item 1";
+    public static final String LISTS = "Lists";
 
     public static final int VERSION = 1;
     private static final String DATABASE_CREATE = "create table "

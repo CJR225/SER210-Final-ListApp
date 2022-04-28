@@ -38,6 +38,7 @@ public class ListsDataSource {
         Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
         cursor.moveToFirst();
         Lists newLists = cursorToList(cursor);
+        newLists.setListName(listName);
         cursor.close();
 
         return newLists;
@@ -47,13 +48,29 @@ public class ListsDataSource {
         ContentValues item1values = new ContentValues();
         item1values.put(ListDatabaseHelper.LIST_ITEM_1,item1);
         long insertId = database.insert(ListDatabaseHelper.TABLE_LISTS,null,item1values);
-        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allItem1Columns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
+        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
         cursor.moveToFirst();
         Lists newLists = cursorToList(cursor);
+        newLists.setItem1(item1);
         cursor.close();
 
         return newLists;
     }
+
+    /*
+    public Lists addItem (String item) {
+        ContentValues item1values = new ContentValues();
+        item1values.put(ListDatabaseHelper.LISTS,item);
+        long insertId = database.insert(ListDatabaseHelper.TABLE_LISTS,null,item1values);
+        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
+        cursor.moveToFirst();
+        Lists newLists = cursorToList(cursor);
+        newLists.setItem1(item);
+        cursor.close();
+
+        return newLists;
+    }
+    */
 
     public void deleteList(Lists list) {
         long id = list.getId();

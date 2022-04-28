@@ -1,9 +1,11 @@
 package edu.quinnipiac.ser210.listapp;
 
+import java.util.List;
+
 public class Lists {
     private long id;
     private String listName;
-    private String[] items;
+    private List<String> items;
     private String item1;
     private String item2;
     private String item3;
@@ -26,20 +28,12 @@ public class Lists {
         this.listName = listName;
     }
 
-    /*
-    public void setItems (int itemNumber, String item) {
-        if ()
-        items[itemNumber] = item;
-    }
     public void setItems (String item) {
-        if (item1 != null) {
-        item1 = item
-        } else if (item2 != null) {
-        item2 = item
-        }
-
+        this.items.add(item);
     }
-     */
+    public String getItem (int itemNumber) {
+        return this.items.get(itemNumber);
+    }
 
     public void setItem1 (String item) {
         item1 = item;
