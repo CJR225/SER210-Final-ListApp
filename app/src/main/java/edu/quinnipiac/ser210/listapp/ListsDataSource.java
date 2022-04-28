@@ -74,6 +74,19 @@ public class ListsDataSource {
         return lists;
     }
 
+    public List<Lists> getAllItems1() {
+        List<Lists> lists = new ArrayList<Lists>();
+        Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allItem1Columns,null,null,null,null,null);
+        cursor.moveToFirst();
+        while (! cursor.isAfterLast()) {
+            Lists list = cursorToList(cursor);
+            lists.add(list);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return lists;
+    }
+
     private Lists cursorToList(Cursor cursor) {
         Lists list = new Lists();
         list.setId(cursor.getLong(0));

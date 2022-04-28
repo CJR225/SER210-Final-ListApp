@@ -115,4 +115,16 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dataSource.close();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dataSource.open();
+    }
 }

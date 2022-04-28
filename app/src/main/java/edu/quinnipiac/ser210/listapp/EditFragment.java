@@ -3,17 +3,24 @@ package edu.quinnipiac.ser210.listapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link EditFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EditFragment extends Fragment {
+public class EditFragment extends ListFragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +30,7 @@ public class EditFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ListsDataSource dataSource;
 
     public EditFragment() {
         // Required empty public constructor
@@ -59,6 +67,56 @@ public class EditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_select_list, container, false);
+        dataSource = new ListsDataSource(this.getContext());
+        dataSource.open();
+        //List<Lists> allLists = dataSource.getAllLists();
+        //ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
+        //setListAdapter(adapter);
+
         return inflater.inflate(R.layout.fragment_edit, container, false);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addItemEditFrag:
+                //Implement statement that checks which number list you are editting
+                //Current implementation assumes first list
+                EditText addItemView = (EditText) getView().findViewById(R.id.editTextEditFrag);
+                String addItem  = addItemView.getText().toString();
+                dataSource.addItem1(addItem);
+                Snackbar itemAdded = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
+                itemAdded.show();
+                break;
+
+            case R.id.removeItemEditFrag:
+                //Implement statement that checks which number list you are editting
+                //Current implementation assumes first list
+                //implement remove item
+                EditText removeItemView = (EditText) getView().findViewById(R.id.editTextEditFrag);
+                String removeItem  = removeItemView.getText().toString();
+                //dataSource.removeItem1(removeItem);
+                Snackbar itemRemoved = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Removed!", 2000);
+                itemRemoved.show();
+                break;
+
+            case R.id.deleteListEditFrag:
+
+                //dataSource.deleteList(dataSource.getAllItems1());
+                break;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dataSource.close();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dataSource.open();
     }
 }
