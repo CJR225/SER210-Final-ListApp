@@ -66,7 +66,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
     }
 
 
-    public void onCreateList () {
+    public void onCreateList (View view) {
         if (listCreated) {
            Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
             createWarning.show();
@@ -83,7 +83,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void onAddToList () {
+    public void onAddToList (View view) {
         if (listCreated) {
             Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
             addWarning.show();
