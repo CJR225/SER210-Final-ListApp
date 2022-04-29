@@ -35,6 +35,11 @@ public class Lists {
         return this.items.get(itemNumber);
     }
 
+    public void delete (String item) {
+        int i = this.items.indexOf(item);
+        this.items.remove(i);
+    }
+
     public void setItem1 (String item) {
         item1 = item;
     }
