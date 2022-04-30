@@ -85,21 +85,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
-    public void onCreateList (View view) {
-        NewListFragment fragP = new NewListFragment();
-
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.nav_host_fragment, fragP);
-        ft.commit();
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragP.onCreateList();
-        
-    }
-    public void onAddToList (View view) {
-
-
-    }
 }

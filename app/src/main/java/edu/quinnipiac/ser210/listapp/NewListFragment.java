@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,12 +47,6 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         dataSource.open();
         List<Lists> allLists = dataSource.getAllLists();
         ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
-
-
-        //toolbarView = getView().findViewById(R.id.toolbar);
-        //editTextView = getView().findViewById(R.id.editTextListName);
-
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_list, container, false);
 
@@ -60,58 +55,61 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        editTextView = getView().findViewById(R.id.editTextListName);
+        if (editTextView != null)
+            Log.v("editText", "EditText");
+        toolbarView = getView().findViewById(R.id.toolbar);
+        if (toolbarView != null)
+            Log.v("toolBar", "toolBar");
         view.findViewById(R.id.editFragNewView).setOnClickListener(this);
 
 
     }
 
-
-    public void onCreateList () {
-
-        //ArrayAdapter<Lists> adapter = (ArrayAdapter<Lists>) getListAdapter();
-        if (listCreated) {
-           Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
-            createWarning.show();
-        } else {
-            EditText listNameView = (EditText) editTextView;
-            String listName = listNameView.getText().toString();
-
-            //Database implementation
-            Lists list = null;
-            list = dataSource.addListName(listName);
-
-            listCreated = true;
-            Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName +  " Created!", 2000);
-            createComplete.show();
-        }
-    }
-
-    public void onAddToList () {
-        if (listCreated) {
-            Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
-            addWarning.show();
-        } else if (itemAdded) {
-            Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You already added an item. Go to edit to add more!", 2000);
-            addWarning.show();
-        } else {
-            EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
-            String listItem  = AddlistItemView.getText().toString();
-
-            Lists list = null;
-            list = dataSource.addItem1(listItem);
-
-            itemAdded = true;
-            Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
-            addComplete.show();
-        }
-
-    }
-
     @Override
     public void onClick(View view) {
+        Log.v("calling", "button");
         switch (view.getId()) {
             case R.id.editFragNewView:
                 navController.navigate(R.id.action_newListFragment_to_editFragment);
+                break;
+            case R.id.createButtonNewView:
+                Log.v("button clicked", "button");
+                if (listCreated) {
+                    Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
+                    createWarning.show();
+                } else {
+                    Log.v("create list", "list");
+                    EditText listNameView = (EditText) editTextView;
+                    String listName = listNameView.getText().toString();
+
+                    //Database implementation
+                    Lists list = null;
+                    list = dataSource.addListName(listName);
+
+                    listCreated = true;
+                    Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName +  " Created!", 2000);
+                    createComplete.show();
+                }
+                break;
+            case R.id.addButtonNewView:
+                if (listCreated) {
+                    Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
+                    addWarning.show();
+                } else if (itemAdded) {
+                    Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You already added an item. Go to edit to add more!", 2000);
+                    addWarning.show();
+                } else {
+                    EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
+                    String listItem  = AddlistItemView.getText().toString();
+
+                    Lists list = null;
+                    list = dataSource.addItem1(listItem);
+
+                    itemAdded = true;
+                    Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
+                    addComplete.show();
+                }
                 break;
         }
     }
