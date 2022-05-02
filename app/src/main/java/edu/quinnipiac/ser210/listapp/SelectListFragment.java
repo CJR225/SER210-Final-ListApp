@@ -39,11 +39,13 @@ public ListView selectListView;
         ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
         setListAdapter(adapter);
 
+        /*
         int i =0;
         while (i < allLists.size()) {
             adapter.add(allLists.get(i));
             i++;
         }
+        */
 
         // Inflate the layout for this fragment
         return view;
