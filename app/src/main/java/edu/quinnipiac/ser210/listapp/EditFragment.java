@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.listapp;
 
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,7 +21,7 @@ import java.util.List;
  * Use the {@link EditFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EditFragment extends ListFragment implements View.OnClickListener {
+public class EditFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +32,7 @@ public class EditFragment extends ListFragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
     private ListsDataSource dataSource;
+    private Lists list;
 
     public EditFragment() {
         // Required empty public constructor
@@ -74,6 +76,7 @@ public class EditFragment extends ListFragment implements View.OnClickListener {
         //ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
         //setListAdapter(adapter);
 
+        //Recieve information from select list on which list you edit
         return inflater.inflate(R.layout.fragment_edit, container, false);
     }
 
@@ -81,11 +84,10 @@ public class EditFragment extends ListFragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.addItemEditFrag:
-                //Implement statement that checks which number list you are editting
-                //Current implementation assumes first list
+                //Recieve information from select list on which list you edit
                 EditText addItemView = (EditText) getView().findViewById(R.id.editTextEditFrag);
                 String addItem  = addItemView.getText().toString();
-                dataSource.addItem1(addItem);
+                dataSource.addItem(list, addItem);
                 Snackbar itemAdded = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
                 itemAdded.show();
                 break;

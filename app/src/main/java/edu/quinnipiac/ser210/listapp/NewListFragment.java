@@ -30,6 +30,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
     private ListsDataSource dataSource;
     private View toolbarView,editTextView;
     private NavController navController = null;
+    private Lists list = null;
 
 
     public NewListFragment() {
@@ -84,8 +85,8 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
                     String listName = listNameView.getText().toString();
 
                     //Database implementation
-                    Lists list = null;
-                    list = dataSource.addListName(listName);
+
+                    dataSource.addListName(listName);
 
                     listCreated = true;
                     Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName +  " Created!", 2000);
@@ -103,8 +104,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
                     EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
                     String listItem  = AddlistItemView.getText().toString();
 
-                    Lists list = null;
-                    list = dataSource.addItem1(listItem);
+                    dataSource.addItem(list, listItem);
 
                     itemAdded = true;
                     Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
