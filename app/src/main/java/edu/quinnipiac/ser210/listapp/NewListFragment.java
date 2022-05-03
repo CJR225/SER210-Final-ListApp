@@ -56,16 +56,19 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        Log.v("viewtest","VIEWTEST");
+        view.findViewById(R.id.editFragNewView).setOnClickListener(this);
+        view.findViewById(R.id.addButtonNewView).setOnClickListener(this);
+        view.findViewById(R.id.createButtonNewView).setOnClickListener(this);
+
         editTextView = getView().findViewById(R.id.editTextListName);
         if (editTextView != null)
             Log.v("editText", "EditText");
         toolbarView = getView().findViewById(R.id.toolbar);
         if (toolbarView != null)
             Log.v("toolBar", "toolBar");
-        view.findViewById(R.id.editFragNewView).setOnClickListener(this);
-
-
     }
+
 
     @Override
     public void onClick(View view) {
@@ -77,7 +80,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
             case R.id.createButtonNewView:
                 Log.v("button clicked", "button");
                 if (listCreated) {
-                    Snackbar createWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You've already made a new list!", 2000);
+                    Snackbar createWarning = Snackbar.make(toolbarView, "You've already made a new list!", 2000);
                     createWarning.show();
                 } else {
                     Log.v("create list", "list");
@@ -89,7 +92,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
                     dataSource.addListName(listName);
 
                     listCreated = true;
-                    Snackbar createComplete = Snackbar.make(getView().findViewById(R.id.toolbar), "List " + listName +  " Created!", 2000);
+                    Snackbar createComplete = Snackbar.make(toolbarView, "List " + listName +  " Created!", 2000);
                     createComplete.show();
                 }
                 break;
