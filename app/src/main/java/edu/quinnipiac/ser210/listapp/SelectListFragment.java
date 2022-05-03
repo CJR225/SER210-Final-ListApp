@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class SelectListFragment extends ListFragment implements View.OnClickListener {
+public class SelectListFragment extends Fragment implements View.OnClickListener {
 
 private NavController navController = null;
 private ListsDataSource dataSource;
@@ -37,7 +37,10 @@ public ListView selectListView;
         dataSource.open();
         List<Lists> allLists = dataSource.getAllLists();
         ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
-        setListAdapter(adapter);
+
+
+        selectListView = (ListView) view.findViewById(R.id.select_list_view);
+        selectListView.setAdapter(adapter);
 
         /*
         int i =0;

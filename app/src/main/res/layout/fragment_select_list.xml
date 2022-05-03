@@ -36,5 +36,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ListView
+        android:id="@+id/select_list_view"
+        android:layout_width="409dp"
+        android:layout_height="502dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="133dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
