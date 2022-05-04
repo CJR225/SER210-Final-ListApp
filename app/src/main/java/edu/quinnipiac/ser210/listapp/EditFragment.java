@@ -4,17 +4,13 @@ package edu.quinnipiac.ser210.listapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,7 +81,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.addItemEditFrag:
                 //Recieve information from select list on which list you edit
-                EditText addItemView = (EditText) getView().findViewById(R.id.editTextEditFrag);
+                EditText addItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String addItem  = addItemView.getText().toString();
                 dataSource.addItem(list, addItem);
                 Snackbar itemAdded = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
@@ -96,7 +92,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
                 //Implement statement that checks which number list you are editting
                 //Current implementation assumes first list
                 //implement remove item
-                EditText removeItemView = (EditText) getView().findViewById(R.id.editTextEditFrag);
+                EditText removeItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String removeItem  = removeItemView.getText().toString();
                 //dataSource.removeItem1(removeItem);
                 Snackbar itemRemoved = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Removed!", 2000);
