@@ -39,8 +39,8 @@ public ListView selectListView;
         ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
 
 
-        selectListView = (ListView) view.findViewById(R.id.select_list_view);
-        selectListView.setAdapter(adapter);
+        //selectListView = (ListView) view.findViewById(R.id.select_list_view);
+        //selectListView.setAdapter(adapter);
 
         /*
         int i =0;
