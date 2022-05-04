@@ -19,7 +19,7 @@ public class ListDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_LISTS + "(" + LIST_ID
             + " integer primary key autoincrement, " + LIST_NAME
-            + " text not null);";
+            + "text not null);";
 
     public ListDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
