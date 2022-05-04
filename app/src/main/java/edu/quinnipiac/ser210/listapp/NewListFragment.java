@@ -21,14 +21,14 @@ import java.util.List;
 import java.util.Random;
 
 
-public class NewListFragment extends Fragment implements View.OnClickListener{
+public class NewListFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private Boolean listCreated = false, itemAdded = false;
     private ListsDataSource dataSource;
-    private View toolbarView,editTextView;
+    private View toolbarView, editTextView;
     private NavController navController = null;
     private Lists list = null;
 
@@ -36,7 +36,6 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
     public NewListFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -52,11 +51,12 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         return inflater.inflate(R.layout.fragment_new_list, container, false);
 
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        Log.v("viewtest","VIEWTEST");
+        Log.v("viewtest", "VIEWTEST");
         view.findViewById(R.id.editFragNewView).setOnClickListener(this);
         view.findViewById(R.id.addButtonNewView).setOnClickListener(this);
         view.findViewById(R.id.createButtonNewView).setOnClickListener(this);
@@ -67,6 +67,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
         toolbarView = getView().findViewById(R.id.toolbar);
         if (toolbarView != null)
             Log.v("toolBar", "toolBar");
+
     }
 
 
@@ -92,7 +93,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
                     dataSource.addListName(listName);
 
                     listCreated = true;
-                    Snackbar createComplete = Snackbar.make(toolbarView, "List " + listName +  " Created!", 2000);
+                    Snackbar createComplete = Snackbar.make(toolbarView, "List " + listName + " Created!", 2000);
                     createComplete.show();
                 }
                 break;
@@ -105,7 +106,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener{
                     addWarning.show();
                 } else {
                     EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
-                    String listItem  = AddlistItemView.getText().toString();
+                    String listItem = AddlistItemView.getText().toString();
 
                     dataSource.addItem(list, listItem);
 

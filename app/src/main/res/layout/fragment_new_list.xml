@@ -62,26 +62,26 @@
         android:layout_height="61dp"
         android:layout_marginStart="152dp"
         android:layout_marginEnd="151dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="28dp"
         android:backgroundTint="@color/light_maroon"
         android:text="@string/edit_list_splash"
         app:layout_constraintBottom_toTopOf="@+id/editFragNewView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/createButtonNewView"
-        android:layout_width="146dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="133dp"
+        android:layout_width="115dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="27dp"
         android:backgroundTint="@color/light_maroon"
         android:text="Create List"
+        app:layout_constraintBottom_toTopOf="@+id/addButtonNewView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/editFragNewView"
@@ -89,11 +89,12 @@
         android:layout_height="60dp"
         android:layout_marginStart="155dp"
         android:layout_marginEnd="156dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="28dp"
         android:backgroundTint="@color/light_maroon"
         android:text="Edit Lists"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -127,7 +128,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextListName" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
