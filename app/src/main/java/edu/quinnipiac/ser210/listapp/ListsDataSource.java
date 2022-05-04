@@ -44,8 +44,6 @@ public class ListsDataSource {
     }
 
     public Lists addItem (Lists list, String item) {
-        ContentValues itemValues = new ContentValues();
-        itemValues.put(ListDatabaseHelper.LISTS,item);
         //grab specific ID
         long insertId = list.getId();
         Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
@@ -57,8 +55,6 @@ public class ListsDataSource {
     }
 
     public Lists removeItem (Lists list, String item) {
-        ContentValues itemValues = new ContentValues();
-        itemValues.put(ListDatabaseHelper.LISTS,item);
         //grab specific ID
         long insertId = list.getId();
         Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,allNameColumns,ListDatabaseHelper.LIST_ID + " = " + insertId, null,null,null,null);
@@ -70,7 +66,7 @@ public class ListsDataSource {
 
     public void deleteList(Lists list) {
         long id = list.getId();
-        database.delete(ListDatabaseHelper.TABLE_LISTS, ListDatabaseHelper.LIST_ID + " = " + id, null  );
+        database.delete(ListDatabaseHelper.TABLE_LISTS, ListDatabaseHelper.LIST_ID + " = " + id, null );
 
     }
 
