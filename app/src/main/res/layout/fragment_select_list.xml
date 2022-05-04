@@ -37,7 +37,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
-        android:id="@+id/select_list_view"
         android:layout_width="409dp"
         android:layout_height="502dp"
         tools:layout_editor_absoluteX="1dp"
