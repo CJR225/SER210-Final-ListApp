@@ -29,7 +29,7 @@ private ListView selectListView, holder;
 private View selectEditView;
 private Boolean listSelected = false;
 public FragHelper helper;
-    int i = 0;
+
 
     public SelectListFragment() {
         // Required empty public constructor
@@ -56,7 +56,7 @@ public FragHelper helper;
 
         selectListView = (ListView) view.findViewById(R.id.select_list_view);
         List<String> listItems = new ArrayList<String>();
-
+        int i = 0;
         while(adapter.getCount() > i) {
             listItems.add(adapter.getItem(i).getListName());
             i++;
@@ -78,16 +78,19 @@ public FragHelper helper;
     @Override
     public void onClick(View view) {
         ArrayAdapter<Reminders> adapter = (ArrayAdapter<Reminders>) holder.getAdapter();
+        ArrayAdapter<String> names = (ArrayAdapter<String>) selectListView.getAdapter();
         EditText listNameView = (EditText) selectEditView;
         String listName = listNameView.getText().toString();
-        int item = 0;
+        int itemIndex = 0;
+        int i = 0;
         while (i < adapter.getCount()) {
-            if (adapter.getItem(i).getListName().toLowerCase() == listName.toLowerCase()) {
-                item = i;
+            if (names.getItem(i).toLowerCase() == listName.toLowerCase()) {
+                itemIndex = i;
                 listSelected = true;
             }
-
+            i++;
         }
+        //if(listSelected = false)
         if(listSelected) {
             Snackbar createWarning = Snackbar.make(view, "This list does not exist!", 2000);
             createWarning.show();

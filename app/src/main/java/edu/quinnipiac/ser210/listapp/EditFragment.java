@@ -116,7 +116,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.deleteListEditFrag:
-
+                //recieve data from select list frag or new list frag and delete the list
                 dataSource.deleteList(adapter.getItem(helper.activeList));
                 break;
         }
