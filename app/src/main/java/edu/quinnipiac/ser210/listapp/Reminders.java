@@ -2,7 +2,7 @@ package edu.quinnipiac.ser210.listapp;
 
 import java.util.List;
 
-public class Lists {
+public class Reminders {
     private long id;
     private String listName;
     private List<String> items;

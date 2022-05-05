@@ -12,7 +12,7 @@ import java.util.List;
 public class ListsDataSource {
     private SQLiteDatabase database;
     private ListDatabaseHelper dbHelper;
-    private String[] allNameColumns = {ListDatabaseHelper.LIST_ID, ListDatabaseHelper.LIST_NAME};
+    private String[] allColumns = {ListDatabaseHelper.COLUMN_ID, ListDatabaseHelper.COLUMN_NAME};
 
     public ListsDataSource(Context context) {
         dbHelper = new ListDatabaseHelper(context);
@@ -30,6 +30,63 @@ public class ListsDataSource {
         dbHelper.close();
     }
 
+        public Reminders createList(String name) {
+            ContentValues values = new ContentValues();
+            values.put(ListDatabaseHelper.COLUMN_NAME, name);
+
+            long insertId = database.insert(ListDatabaseHelper.TABLE_LISTS, null,
+                    values);
+
+
+            Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,
+                    allColumns, ListDatabaseHelper.COLUMN_ID + " = " + insertId, null,
+                    null, null, null);
+
+            cursor.moveToFirst();
+
+            Reminders newList = cursorToList(cursor);
+            cursor.close();
+
+            return newList ;
+        }
+
+        public Reminders addItem(String item) {
+
+            return null;
+        }
+
+        public void deleteList (Reminders list) {
+            long id = list.getId();
+            System.out.println("List deleted with id: " + id);
+            database.delete(ListDatabaseHelper.TABLE_LISTS, ListDatabaseHelper.COLUMN_ID
+                    + " = " + id, null);
+        }
+
+        public List<Reminders> getAllLists() {
+            List<Reminders> lists = new ArrayList<Reminders>();
+
+            Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,
+                    allColumns, null, null, null, null, null);
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Reminders list = cursorToList(cursor);
+                lists.add(list);
+                cursor.moveToNext();
+            }
+            // make sure to close the cursor
+            cursor.close();
+            return lists;
+        }
+
+        private Reminders cursorToList(Cursor cursor) {
+            Reminders comment = new Reminders();
+            comment.setId(cursor.getLong(0));
+            comment.setListName(cursor.getString(1));
+            return comment;
+        }
+    }
+/*
     public Lists addListName (String listName) {
         ContentValues values = new ContentValues();
         values.put(ListDatabaseHelper.LIST_NAME,listName);
@@ -89,4 +146,6 @@ public class ListsDataSource {
         list.setListName(cursor.getString(1));
         return list;
     }
-}
+
+ */
+
