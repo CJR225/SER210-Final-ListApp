@@ -81,7 +81,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
             case R.id.createButtonNewView:
                 Log.v("button clicked", "button");
                 if (listCreated) {
-                    Snackbar createWarning = Snackbar.make(toolbarView, "You've already made a new list!", 2000);
+                    Snackbar createWarning = Snackbar.make(view, "You've already made a new list!", 2000);
                     createWarning.show();
                 } else {
                     Log.v("create list", "list");
@@ -98,10 +98,10 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.addButtonNewView:
                 if (listCreated) {
-                    Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You haven't made a list yet!", 2000);
+                    Snackbar addWarning = Snackbar.make(view, "You haven't made a list yet!", 2000);
                     addWarning.show();
                 } else if (itemAdded) {
-                    Snackbar addWarning = Snackbar.make(getView().findViewById(R.id.toolbar), "You already added an item. Go to edit to add more!", 2000);
+                    Snackbar addWarning = Snackbar.make(view, "You already added an item. Go to edit to add more!", 2000);
                     addWarning.show();
                 } else {
                     EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
@@ -110,7 +110,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
                     list = dataSource.addItem(listItem);
 
                     itemAdded = true;
-                    Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
+                    Snackbar addComplete = Snackbar.make(view, listItem + " Added!", 2000);
                     addComplete.show();
                 }
                 break;
