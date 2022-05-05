@@ -92,7 +92,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
                     list = dataSource.createList(listName);
 
                     listCreated = true;
-                    Snackbar createComplete = Snackbar.make(toolbarView, "List " + listName + " Created!", 2000);
+                    Snackbar createComplete = Snackbar.make(view, "List " + listName + " Created!", 2000);
                     createComplete.show();
                 }
                 break;
