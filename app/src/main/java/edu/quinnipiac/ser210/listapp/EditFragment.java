@@ -87,22 +87,28 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.addItemEditFrag:
                 //Recieve information from select list on which list you edit
+                /*
                 EditText addItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String addItem  = addItemView.getText().toString();
                 dataSource.addItem(addItem);
                 Snackbar itemAdded = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
                 itemAdded.show();
+
+                 */
                 break;
 
             case R.id.removeItemEditFrag:
                 //Implement statement that checks which number list you are editting
                 //Current implementation assumes first list
                 //implement remove item
+                /*
                 EditText removeItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String removeItem  = removeItemView.getText().toString();
-                //dataSource.removeItem1(removeItem);
+                dataSource.removeItem1(removeItem);
                 Snackbar itemRemoved = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Removed!", 2000);
                 itemRemoved.show();
+
+                 */
                 break;
 
             case R.id.deleteListEditFrag:
