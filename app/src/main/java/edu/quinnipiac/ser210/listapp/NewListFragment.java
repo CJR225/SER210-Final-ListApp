@@ -18,7 +18,6 @@ import android.widget.EditText;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
-import java.util.Random;
 
 
 public class NewListFragment extends Fragment implements View.OnClickListener {
@@ -60,7 +59,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.addButtonNewView).setOnClickListener(this);
         view.findViewById(R.id.createButtonNewView).setOnClickListener(this);
 
-        editTextView = getView().findViewById(R.id.editTextListName);
+        editTextView = getView().findViewById(R.id.selectListEditView);
         if (editTextView != null)
             Log.v("editText", "EditText");
         toolbarView = getView().findViewById(R.id.toolbar);
@@ -75,7 +74,9 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
         Log.v("calling", "button");
         switch (view.getId()) {
             case R.id.editFragNewView:
-                navController.navigate(R.id.action_newListFragment_to_editFragment);
+                if (listCreated) {
+                    navController.navigate(R.id.action_newListFragment_to_editFragment);
+                }
                 break;
             case R.id.createButtonNewView:
                 Log.v("button clicked", "button");

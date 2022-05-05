@@ -37,7 +37,6 @@ public class ListsDataSource {
             long insertId = database.insert(ListDatabaseHelper.TABLE_LISTS, null,
                     values);
 
-
             Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,
                     allColumns, ListDatabaseHelper.COLUMN_ID + " = " + insertId, null,
                     null, null, null);
@@ -45,6 +44,7 @@ public class ListsDataSource {
             cursor.moveToFirst();
 
             Reminders newList = cursorToList(cursor);
+            newList.setListName(name);
             cursor.close();
 
             return newList ;
@@ -52,7 +52,28 @@ public class ListsDataSource {
 
         public Reminders addItem(String item) {
 
-            return null;
+            ContentValues values = new ContentValues();
+            values.put(ListDatabaseHelper.COLUMN_ITEM1, item);
+
+            Cursor cursor = database.query(ListDatabaseHelper.TABLE_LISTS,
+                    allColumns, ListDatabaseHelper.COLUMN_ITEM1 + " = " + item, null,
+                    null, null, null);
+
+            cursor.moveToFirst();
+
+            Reminders newList = cursorToList(cursor);
+            newList.setItem1(item);
+            cursor.close();
+
+            return newList;
+        }
+
+        public void renameList (Reminders list, String name) {
+            list.setListName(name);
+
+            long id = list.getId();
+            database.replace(ListDatabaseHelper.TABLE_LISTS, ListDatabaseHelper.COLUMN_NAME
+                    + " = " + name, null);
         }
 
         public void deleteList (Reminders list) {
@@ -80,10 +101,13 @@ public class ListsDataSource {
         }
 
         private Reminders cursorToList(Cursor cursor) {
-            Reminders comment = new Reminders();
-            comment.setId(cursor.getLong(0));
-            comment.setListName(cursor.getString(1));
-            return comment;
+            Reminders list = new Reminders();
+            list.setId(cursor.getLong(0));
+            list.setListName(cursor.getString(1));
+            //if(cursor.getString(2) != null) {
+            //    list.setItem1(cursor.getString(2));
+            //}
+            return list;
         }
     }
 /*

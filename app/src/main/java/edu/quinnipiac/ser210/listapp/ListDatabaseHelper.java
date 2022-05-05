@@ -12,9 +12,10 @@ public class ListDatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_LISTS = "ListHolder";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "ListNames";
+    public static final String COLUMN_ITEM1 = "Item1";
 
 
-    public static final int VERSION = 2;
+    public static final int VERSION = 5;
     private static final String DATABASE_CREATE = "create table "
             + TABLE_LISTS + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_NAME
