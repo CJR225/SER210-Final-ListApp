@@ -18,15 +18,16 @@ import android.widget.ListView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectListFragment extends Fragment implements View.OnClickListener {
 
 private NavController navController = null;
 private ListsDataSource dataSource;
-private ListView selectListView;
+private ListView selectListView, holder;
 private View selectEditView;
-private Boolean listSelected;
+private Boolean listSelected = false;
 public FragHelper helper;
     int i = 0;
 
@@ -44,13 +45,25 @@ public FragHelper helper;
         dataSource = new ListsDataSource(this.getContext());
         dataSource.open();
 
-        selectListView = (ListView) view.findViewById(R.id.select_list_view);
-        List<Reminders> values = dataSource.getAllLists();
-
         // use the SimpleCursorAdapter to show the
         // elements in a ListView
+
+
+        holder = (ListView) view.findViewById(R.id.select_list_view);
+        List<Reminders> values = dataSource.getAllLists();
         ArrayAdapter<Reminders> adapter = new ArrayAdapter<Reminders>(this.getContext(), android.R.layout.simple_list_item_1, values);
-        selectListView.setAdapter(adapter);
+        holder.setAdapter(adapter);
+
+        selectListView = (ListView) view.findViewById(R.id.select_list_view);
+        List<String> listItems = new ArrayList<String>();
+
+        while(adapter.getCount() > i) {
+            listItems.add(adapter.getItem(i).getListName());
+            i++;
+        }
+        ArrayAdapter<String> listNames = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, listItems);
+
+        selectListView.setAdapter(listNames);
         return view;
     }
 
@@ -64,7 +77,7 @@ public FragHelper helper;
 
     @Override
     public void onClick(View view) {
-        ArrayAdapter<Reminders> adapter = (ArrayAdapter<Reminders>) selectListView.getAdapter();
+        ArrayAdapter<Reminders> adapter = (ArrayAdapter<Reminders>) holder.getAdapter();
         EditText listNameView = (EditText) selectEditView;
         String listName = listNameView.getText().toString();
         int item = 0;
@@ -79,7 +92,7 @@ public FragHelper helper;
             Snackbar createWarning = Snackbar.make(view, "This list does not exist!", 2000);
             createWarning.show();
         } else {
-            helper.setActiveList(item);
+            //helper.setActiveList(item);
             navController.navigate(R.id.action_selectListFragment_to_editFragment);
         }
     }

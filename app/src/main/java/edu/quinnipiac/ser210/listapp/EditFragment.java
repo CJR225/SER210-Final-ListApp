@@ -35,6 +35,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     private Reminders list;
     public FragHelper helper;
     private ListView editListView;
+    private View viewHolder;
     public EditFragment() {
         // Required empty public constructor
     }
@@ -74,9 +75,12 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         dataSource = new ListsDataSource(this.getContext());
         dataSource.open();
 
+        editListView = (ListView) view.findViewById(R.id.editListView);
         List<Reminders> values = dataSource.getAllLists();
         ArrayAdapter<Reminders> adapter = new ArrayAdapter<Reminders>(this.getContext(), android.R.layout.simple_list_item_1, values);
-        editListView.setAdapter(adapter);
+        //editListView.setAdapter(adapter);
+
+
         //Recieve information from select list on which list you edit
         return inflater.inflate(R.layout.fragment_edit, container, false);
     }
