@@ -22,7 +22,11 @@
         android:id="@+id/editFragment"
         android:name="edu.quinnipiac.ser210.listapp.EditFragment"
         android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" />
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_editFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
     <fragment
         android:id="@+id/selectListFragment"
         android:name="edu.quinnipiac.ser210.listapp.SelectListFragment"

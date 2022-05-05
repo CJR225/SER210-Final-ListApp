@@ -10,11 +10,13 @@
             <item
                 android:id="@+id/backgroundblue"
                 android:icon="@drawable/ic_icon_blue"
+                android:iconTint="@color/light_blue"
                 android:title="Blue Background" />
 
             <item
                 android:id="@+id/backgroundred"
                 android:icon="@drawable/ic_icon_red"
+
                 android:title="Red Background" />
         </menu>
     </item>

@@ -1,11 +1,15 @@
 package edu.quinnipiac.ser210.listapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,6 +21,9 @@ import androidx.navigation.Navigation;
 public class SplashFragment extends Fragment implements View.OnClickListener {
 
     NavController navController = null;
+    MainActivity mainActivity;
+    private Button buttonNew,buttonAdd,buttonView;
+
 
     public SplashFragment() {
         // Required empty public constructor
@@ -26,8 +33,8 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_splash, container, false);
+
     }
 
 
@@ -46,6 +53,7 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.newbutton:
                 navController.navigate(R.id.action_splashFragment_to_newListFragment);
+
                 break;
             case R.id.editbutton:
                 navController.navigate(R.id.action_splashFragment_to_selectListFragment);
@@ -57,4 +65,10 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+    /*
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+    savedInstanceState.putInt();
+    }
+     */
 }

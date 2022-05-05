@@ -1,6 +1,7 @@
 package edu.quinnipiac.ser210.listapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,17 +27,16 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawerLayout;
-    NavController navController;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    NewListFragment test;
+    private DrawerLayout drawerLayout;
+    private NavController navController;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private NewListFragment test;
     private ShareActionProvider shareActionProvider;
-    Button buttonNew,buttonAdd,buttonView,
-    addButtonNewView,createButtonNewView,editFragNewView;
-    ConstraintLayout headerlayout;
-
-
+    private Button buttonNew,buttonAdd,buttonView,
+     addButtonNewView,createButtonNewView,editFragNewView;
+    private ConstraintLayout headerlayout;
+    int color = 2;
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     //need to use intent to pass if color is blue oncreate frag change color
@@ -96,22 +95,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         headerlayout = findViewById(R.id.header_layout);
         int id = item.getItemId();
         if (id == R.id.backgroundblue) {
+        color = 2;
+
         toolbar.setBackgroundColor(getResources().getColor(R.color.light_blue));
         headerlayout.setBackgroundColor(getResources().getColor(R.color.light_blue));
-        buttonNew.setBackgroundColor(getResources().getColor(R.color.light_blue));
-        buttonAdd.setBackgroundColor(getResources().getColor(R.color.light_blue));
-        buttonView.setBackgroundColor(getResources().getColor(R.color.light_blue));
+            findViewById(R.id.newbutton).setBackgroundColor(getResources().getColor(R.color.light_blue));
+            findViewById(R.id.editbutton).setBackgroundColor(getResources().getColor(R.color.light_blue));
+            buttonView.setBackgroundColor(getResources().getColor(R.color.light_blue));
 
         } else if (id == R.id.backgroundred) {
+
+            color = 1;
+
             toolbar.setBackgroundColor(getResources().getColor(R.color.maroon));
             headerlayout.setBackgroundColor(getResources().getColor(R.color.maroon));
             buttonNew.setBackgroundColor(getResources().getColor(R.color.maroon));
             buttonAdd.setBackgroundColor(getResources().getColor(R.color.maroon));
-            buttonView.setBackgroundColor(getResources().getColor(R.color.maroon));
+            findViewById(R.id.allviewbutton).setBackgroundColor(getResources().getColor(R.color.maroon));
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public int backgroundColor() {
+           return color;
     }
 
 
