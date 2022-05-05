@@ -13,8 +13,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
         android:text="All Lists"
         android:textColor="@color/black"
@@ -23,8 +22,7 @@
         app:layout_constraintBottom_toTopOf="@+id/select_list_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/editFrag_SelectView"
@@ -40,18 +38,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectListEditView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <ListView
         android:id="@+id/select_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="414dp"
+        android:layout_width="411dp"
+        android:layout_height="181dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.236" />
 
     <EditText
         android:id="@+id/selectListEditView"
