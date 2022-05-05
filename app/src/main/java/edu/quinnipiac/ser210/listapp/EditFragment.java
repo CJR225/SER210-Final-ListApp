@@ -8,9 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +33,9 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     private String mParam2;
     private ListsDataSource dataSource;
     private Reminders list;
-
+    public FragHelper helper;
+    private ListView editListView;
+    private View viewHolder;
     public EditFragment() {
         // Required empty public constructor
     }
@@ -68,9 +74,12 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_select_list, container, false);
         dataSource = new ListsDataSource(this.getContext());
         dataSource.open();
-        //List<Lists> allLists = dataSource.getAllLists();
-        //ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
-        //setListAdapter(adapter);
+
+        editListView = (ListView) view.findViewById(R.id.editListView);
+        List<Reminders> values = dataSource.getAllLists();
+        ArrayAdapter<Reminders> adapter = new ArrayAdapter<Reminders>(this.getContext(), android.R.layout.simple_list_item_1, values);
+        //editListView.setAdapter(adapter);
+
 
         //Recieve information from select list on which list you edit
         return inflater.inflate(R.layout.fragment_edit, container, false);
@@ -78,33 +87,41 @@ public class EditFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        ArrayAdapter<Reminders> adapter = (ArrayAdapter<Reminders>) editListView.getAdapter();
         switch (view.getId()) {
             case R.id.addItemEditFrag:
                 //Recieve information from select list on which list you edit
+                /*
                 EditText addItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String addItem  = addItemView.getText().toString();
                 dataSource.addItem(addItem);
                 Snackbar itemAdded = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
                 itemAdded.show();
+
+                 */
                 break;
 
             case R.id.removeItemEditFrag:
                 //Implement statement that checks which number list you are editting
                 //Current implementation assumes first list
                 //implement remove item
+                /*
                 EditText removeItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String removeItem  = removeItemView.getText().toString();
-                //dataSource.removeItem1(removeItem);
+                dataSource.removeItem1(removeItem);
                 Snackbar itemRemoved = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Removed!", 2000);
                 itemRemoved.show();
+
+                 */
                 break;
 
             case R.id.deleteListEditFrag:
-
-                //dataSource.deleteList(dataSource.getAllItems1());
+                //recieve data from select list frag or new list frag and delete the list
+                dataSource.deleteList(adapter.getItem(helper.activeList));
                 break;
         }
     }
+
 
     @Override
     public void onPause() {
