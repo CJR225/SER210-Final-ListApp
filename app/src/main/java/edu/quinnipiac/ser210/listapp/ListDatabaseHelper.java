@@ -10,16 +10,15 @@ import androidx.annotation.Nullable;
 public class ListDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "lists.db";
     public static final String TABLE_LISTS = "ListHolder";
-    public static final String LIST_ID = "_id";
-    public static final String LIST_NAME = "List Names";
-    public static final String LIST_ITEM_1 = "List Item 1";
-    public static final String LISTS = "Lists";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_NAME = "ListNames";
 
-    public static final int VERSION = 1;
+
+    public static final int VERSION = 2;
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_LISTS + "(" + LIST_ID
-            + " integer primary key autoincrement, " + LIST_NAME
-            + "text not null);";
+            + TABLE_LISTS + "(" + COLUMN_ID
+            + " integer primary key autoincrement, " + COLUMN_NAME
+            + " text not null);";
 
     public ListDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);

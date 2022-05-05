@@ -35,12 +35,12 @@ public ListView selectListView;
         View view = inflater.inflate(R.layout.fragment_select_list, container, false);
         dataSource = new ListsDataSource(this.getContext());
         dataSource.open();
-        List<Lists> allLists = dataSource.getAllLists();
-        ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
+        //List<Lists> allLists = dataSource.getAllLists();
+        //ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
 
 
         //selectListView = (ListView) view.findViewById(R.id.select_list_view);
-        selectListView.setAdapter(adapter);
+        //selectListView.setAdapter(adapter);
 
         // Inflate the layout for this fragment
         return view;

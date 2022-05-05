@@ -28,7 +28,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
     private ListsDataSource dataSource;
-    private Lists list;
+    private Reminders list;
 
     public EditFragment() {
         // Required empty public constructor
@@ -83,7 +83,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
                 //Recieve information from select list on which list you edit
                 EditText addItemView = (EditText) getView().findViewById(R.id.addTextViewEditFrag);
                 String addItem  = addItemView.getText().toString();
-                dataSource.addItem(list, addItem);
+                dataSource.addItem(addItem);
                 Snackbar itemAdded = Snackbar.make(getView().findViewById(R.id.toolbar), "Item Added!", 2000);
                 itemAdded.show();
                 break;

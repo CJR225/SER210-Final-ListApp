@@ -30,7 +30,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
     private ListsDataSource dataSource;
     private View toolbarView, editTextView;
     private NavController navController = null;
-    private Lists list = null;
+    private Reminders list = null;
 
 
     public NewListFragment() {
@@ -45,8 +45,8 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
         itemAdded = false;
         dataSource = new ListsDataSource(this.getContext());
         dataSource.open();
-        List<Lists> allLists = dataSource.getAllLists();
-        ArrayAdapter<Lists> adapter = new ArrayAdapter<Lists>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
+        List<Reminders> allLists = dataSource.getAllLists();
+        ArrayAdapter<Reminders> adapter = new ArrayAdapter<Reminders>(this.getContext(), android.R.layout.simple_list_item_1, allLists);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_list, container, false);
 
@@ -89,11 +89,10 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
                     String listName = listNameView.getText().toString();
 
                     //Database implementation
-
-                    dataSource.addListName(listName);
+                    list = dataSource.createList(listName);
 
                     listCreated = true;
-                    Snackbar createComplete = Snackbar.make(toolbarView, "List " + listName + " Created!", 2000);
+                    Snackbar createComplete = Snackbar.make(view, "List " + listName + " Created!", 2000);
                     createComplete.show();
                 }
                 break;
@@ -108,7 +107,7 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
                     EditText AddlistItemView = (EditText) getView().findViewById(R.id.editTextTextMultiLine);
                     String listItem = AddlistItemView.getText().toString();
 
-                    dataSource.addItem(list, listItem);
+                    list = dataSource.addItem(listItem);
 
                     itemAdded = true;
                     Snackbar addComplete = Snackbar.make(getView().findViewById(R.id.toolbar), listItem + " Added!", 2000);
