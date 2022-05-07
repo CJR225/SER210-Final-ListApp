@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.listapp;
-
+//List Reminders App
+//By: Rion-Mark McLaren Jr. and Chirstopher Rocco
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,9 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavController navController;
     private NavigationView navigationView;
     private Toolbar toolbar;
-    private NewListFragment test;
     private ShareActionProvider shareActionProvider;
-    private ConstraintLayout headerlayout;
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -83,23 +82,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    //need to use intent to pass if color is blue oncreate frag change color
 
+    //Change background when the menu item is selected
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
         if (id == R.id.backgroundblue) {
-            //findViewById(R.id.header_layout).setBackgroundColor(getResources().getColor(R.color.light_blue));
-        //toolbar.setBackgroundColor(getResources().getColor(R.color.light_blue));
         Utils.changeToTheme(this, Utils.THEME_BLUE);
 
         } else if (id == R.id.backgroundred) {
-
-
-            //findViewById(R.id.header_layout).setBackgroundColor(getResources().getColor(R.color.maroon));
-            //toolbar.setBackgroundColor(getResources().getColor(R.color.maroon));
-
             Utils.changeToTheme(this,Utils.THEME_RED);
         }
 

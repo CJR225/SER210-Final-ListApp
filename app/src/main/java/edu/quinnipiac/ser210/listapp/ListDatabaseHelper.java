@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+//NO ITEM IMPLEMENTATION
 public class ListDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "lists.db";
     public static final String TABLE_LISTS = "ListHolder";

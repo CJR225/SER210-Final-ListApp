@@ -69,13 +69,5 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
 
                 break;
         }
-
     }
-
-    /*
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-    savedInstanceState.putInt();
-    }
-     */
 }

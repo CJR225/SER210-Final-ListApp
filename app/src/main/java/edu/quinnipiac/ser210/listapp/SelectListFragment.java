@@ -35,8 +35,7 @@ public FragHelper helper;
         // Required empty public constructor
     }
 
-
-
+    //Display item names on the list
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,11 +43,8 @@ public FragHelper helper;
         View view = inflater.inflate(R.layout.fragment_select_list, container, false);
         dataSource = new ListsDataSource(this.getContext());
         dataSource.open();
-
         // use the SimpleCursorAdapter to show the
         // elements in a ListView
-
-
         holder = (ListView) view.findViewById(R.id.select_list_view);
         List<Reminders> values = dataSource.getAllLists();
         ArrayAdapter<Reminders> adapter = new ArrayAdapter<Reminders>(this.getContext(), android.R.layout.simple_list_item_1, values);
@@ -75,6 +71,8 @@ public FragHelper helper;
         selectEditView = getView().findViewById(R.id.selectListEditView);
     }
 
+    //Compares the name in the edit-text to the list names, and selects the named list to send to edit list
+    //UNIMPLEMENTED
     @Override
     public void onClick(View view) {
         ArrayAdapter<Reminders> adapter = (ArrayAdapter<Reminders>) holder.getAdapter();

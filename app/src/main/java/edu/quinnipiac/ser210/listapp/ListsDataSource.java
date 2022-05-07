@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+//NO ITEM IMPLEMENTATION
 public class ListsDataSource {
     private SQLiteDatabase database;
     private ListDatabaseHelper dbHelper;

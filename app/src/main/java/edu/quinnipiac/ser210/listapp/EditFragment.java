@@ -20,6 +20,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * Use the {@link EditFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * UNIMPLEMENTED
  */
 public class EditFragment extends Fragment implements View.OnClickListener {
 
@@ -85,6 +86,8 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         return inflater.inflate(R.layout.fragment_edit, container, false);
     }
 
+
+    //UNIMPLEMENTED
     @Override
     public void onClick(View view) {
         ArrayAdapter<Reminders> adapter = (ArrayAdapter<Reminders>) editListView.getAdapter();

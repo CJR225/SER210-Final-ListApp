@@ -23,8 +23,6 @@ import java.util.List;
 public class NewListFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private Boolean listCreated = false, itemAdded = false;
     private ListsDataSource dataSource;
     private View toolbarView, editTextView;
@@ -73,11 +71,13 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Log.v("calling", "button");
         switch (view.getId()) {
+            //move to edit fragment when the button is pressed
             case R.id.editFragNewView:
                 if (listCreated) {
                     navController.navigate(R.id.action_newListFragment_to_editFragment);
                 }
                 break;
+                //Check if a new list has already been created, if not create a new list and it to the database
             case R.id.createButtonNewView:
                 Log.v("button clicked", "button");
                 if (listCreated) {
@@ -96,6 +96,9 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
                     createComplete.show();
                 }
                 break;
+                //Check if there is a new list to add items to, or if an item has already been added
+                //If there is add the item from the edit-text to the database
+                //UNIMPLEMENTED
             case R.id.addButtonNewView:
                 if (listCreated) {
                     Snackbar addWarning = Snackbar.make(view, "You haven't made a list yet!", 2000);
