@@ -33,10 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private NewListFragment test;
     private ShareActionProvider shareActionProvider;
-    private Button buttonNew,buttonAdd,buttonView,
-     addButtonNewView,createButtonNewView,editFragNewView;
     private ConstraintLayout headerlayout;
-    int color = 2;
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -71,14 +68,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        buttonNew = findViewById(R.id.newbutton);
-        buttonAdd = findViewById(R.id.editbutton);
-        buttonView = findViewById(R.id.allviewbutton);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigationView);
@@ -92,34 +87,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        headerlayout = findViewById(R.id.header_layout);
+
         int id = item.getItemId();
         if (id == R.id.backgroundblue) {
-        color = 2;
-
-        toolbar.setBackgroundColor(getResources().getColor(R.color.light_blue));
-        headerlayout.setBackgroundColor(getResources().getColor(R.color.light_blue));
-            findViewById(R.id.newbutton).setBackgroundColor(getResources().getColor(R.color.light_blue));
-            findViewById(R.id.editbutton).setBackgroundColor(getResources().getColor(R.color.light_blue));
-            buttonView.setBackgroundColor(getResources().getColor(R.color.light_blue));
+            //findViewById(R.id.header_layout).setBackgroundColor(getResources().getColor(R.color.light_blue));
+        //toolbar.setBackgroundColor(getResources().getColor(R.color.light_blue));
+        Utils.changeToTheme(this, Utils.THEME_BLUE);
 
         } else if (id == R.id.backgroundred) {
 
-            color = 1;
 
-            toolbar.setBackgroundColor(getResources().getColor(R.color.maroon));
-            headerlayout.setBackgroundColor(getResources().getColor(R.color.maroon));
-            buttonNew.setBackgroundColor(getResources().getColor(R.color.maroon));
-            buttonAdd.setBackgroundColor(getResources().getColor(R.color.maroon));
-            findViewById(R.id.allviewbutton).setBackgroundColor(getResources().getColor(R.color.maroon));
+            //findViewById(R.id.header_layout).setBackgroundColor(getResources().getColor(R.color.maroon));
+            //toolbar.setBackgroundColor(getResources().getColor(R.color.maroon));
+
+            Utils.changeToTheme(this,Utils.THEME_RED);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public int backgroundColor() {
-           return color;
     }
 
 

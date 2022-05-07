@@ -1,5 +1,8 @@
 package edu.quinnipiac.ser210.listapp;
 
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +28,8 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
     private Button buttonNew,buttonAdd,buttonView;
 
 
+
+
     public SplashFragment() {
         // Required empty public constructor
     }
@@ -33,6 +38,7 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_splash, container, false);
 
     }
@@ -65,6 +71,7 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+
     /*
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
